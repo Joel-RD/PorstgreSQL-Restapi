@@ -1,13 +1,13 @@
 import pg from "pg";
-import {HOST, PASSWORD, USER, DATABASES, PORT_DB} from "../config.js"
+import {HOST, PASSWORD, USER, DATABASES, PORT_DB, cloudDB} from "../config.js"
 
 const { Pool } = pg;
 
 
-export const DB = (connectionString) => {
+export const DB = () => {
   try {
     return new Pool({
-      connectionString: `postgresql://${USER}:${PASSWORD}@${HOST}:${PORT_DB}/${DATABASES}`,
+      connectionString: cloudDB || `postgresql://${USER}:${PASSWORD}@${HOST}:${PORT_DB}/${DATABASES}` ,
     });
   } catch (e) {
     console.log(e);
@@ -15,7 +15,6 @@ export const DB = (connectionString) => {
   }
 };
 
-const localConnection = `postgresql://${USER}:${PASSWORD}@${HOST}:${PORT_DB}/${DATABASES}`
-DB(localConnection)
+
 
 export default DB;
