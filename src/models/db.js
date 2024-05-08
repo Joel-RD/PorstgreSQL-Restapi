@@ -3,19 +3,19 @@ import {HOST, PASSWORD, USER, DATABASES, PORT_DB} from "../config.js"
 
 const { Pool } = pg;
 
-export const DB = () => {
+
+export const DB = (connectionString) => {
   try {
     return new Pool({
-      host: HOST,
-      port: PORT_DB,
-      database: DATABASES,
-      user: USER,
-      password: PASSWORD,
+      connectionString: `postgresql://${USER}:${PASSWORD}@${HOST}:${PORT_DB}/${DATABASES}`,
     });
   } catch (e) {
     console.log(e);
     console.log("DB connect error");
   }
 };
+
+const localConnection = `postgresql://${USER}:${PASSWORD}@${HOST}:${PORT_DB}/${DATABASES}`
+DB(localConnection)
 
 export default DB;

@@ -1,3 +1,5 @@
+CREATE  DATABASE "Api-Node";
+
 CREATE TABLE users (
     id SERIAL PRIMARY KEY,
     name VARCHAR(400) NOT NULL,

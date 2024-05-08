@@ -5,3 +5,4 @@ export const PORT_DB = 5432;
 export const DATABASES = "Api-Node";
 export const USER = "postgres";
 export const PASSWORD = "eudy23";
+export const cloudDB = process.env.CLOUD_DB;
